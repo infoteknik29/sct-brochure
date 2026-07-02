@@ -1,0 +1,229 @@
+/* Mobile Fullscreen Fix - Portrait & Landscape */
+@media (max-width: 768px) and (orientation: portrait) {
+    .sweeper-fullscreen, .Poster-fullscreen, .product-fullscreen {
+        height: 25vh !important;
+        margin-bottom: 1.5rem;
+    }
+
+        .logo-nav {
+        height: 20px !important;
+    }
+    
+    .nav-menu {
+        gap: 0.2rem !important;
+        font-size: 0.2rem !important;
+    }
+    
+    .nav-menu a {
+        padding: 0.25rem 0.3rem !important;
+    }
+    
+    .sweeper-fullscreen {
+        height: 90vh !important;
+    }
+    
+    .sweeper-overlay {
+        height: 100vh !important;
+        padding: 0 !important;
+    }
+    
+    .carousel {
+        height: 90vh !important;
+        margin: 0 !important;
+    }
+    
+    .carousel-slide {
+        height: 90vh !important;
+        margin: 0 !important;
+    }
+    
+    .carousel-slide img {
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center !important;
+    }
+    
+    body.dashboard {
+        font-size: 0.85rem;
+    }
+
+        .hero-section {
+        height: 110vh !important;
+    }
+
+    /* account for fixed navbar */
+    .hero-section {
+        padding-top: 50px !important;
+        box-sizing: border-box !important;
+    }
+
+    .hero {
+        height: calc(110vh - 0px) !important;
+        padding-top: 0 !important;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .navbar {
+        padding: 0.25rem 0.5rem !important;
+        height: 50px !important;
+    }
+    
+    .logo-nav {
+        height: 30px !important;
+    }
+    
+    .nav-menu {
+        gap: 0.5rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .nav-menu a {
+        padding: 0.25rem 0.3rem !important;
+    }
+    
+    .sweeper-fullscreen {
+        height: 100vh !important;
+    }
+    
+    .sweeper-overlay {
+        height: 100vh !important;
+        padding: 0 !important;
+    }
+    
+    .carousel {
+        height: 90vh !important;
+        margin: 0 !important;
+    }
+    
+    .carousel-slide {
+        height: 90vh !important;
+        margin: 0 !important;
+    }
+    
+    .carousel-slide img {
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center !important;
+    }
+    
+    body.dashboard {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* allow swipe/scroll normally, but prevent horizontal "freeze" layout bugs */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    body.dashboard {
+        overflow-x: hidden;
+    }
+
+    .hero-section {
+        height: 110vh !important;
+    }
+
+    /* account for fixed navbar */
+    .hero-section {
+        padding-top: 50px !important;
+        box-sizing: border-box !important;
+    }
+
+    .hero {
+        height: calc(95vh - 0px) !important;
+        padding-top: 0 !important;
+    }
+
+    /* prevent hero buttons from getting pushed/cropped under fixed navbar */
+    /* keep hero text/buttons within visible area on portrait */
+    .hero-buttons {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons button {
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .sweeper-overlay, .product-overlay {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Poster-depureco, .Poster-dulevo, .Poster-fimap, .Poster-hidromak, .Poster-ronking, .Poster-spitwater, .Poster-spraystream, .Poster-univac {
+        height: auto !important;
+        min-height: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.25rem 0 !important;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+        gap: 1rem;
+        width: 100%;
+        padding: 0.5rem 0.5rem;
+        justify-items: center;
+        justify-content: center;
+    }
+    
+    .social-btn {
+        min-height: 25px !important;
+        padding: 0.35rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .social-btn img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .carousel {
+        height: 70vh;
+    }
+
+    .carousel-slide {
+        height: 70vh !important;
+    }
+
+    .footer {
+        padding: 1rem 0.5rem !important;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Poster Images */
+.Poster-fullscreen {
+    background: transparent !important;
+}
+
+.Poster-fullscreen img, .sweeper-fullscreen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0;
+}
+

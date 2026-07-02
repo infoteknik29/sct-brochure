@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCT Product Lineup</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-colors.css">
+    <link rel="icon" href="favicon.ico">
+    <style>
+        body { background: linear-gradient(135deg, #121E23 0%, #335A46 25%, #F8DCB0 50%, #5BA5DF 75%, #162B5B 100%); color: white; min-height: 100vh; font-family: Arial; }
+        .header { text-align: center; padding: 4rem 2rem 2rem; }
+        .header h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .back-btn { display: inline-block; margin-top: 1rem; padding: 1rem 2rem; background: linear-gradient(45deg, #3498db, #2980b9); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s; }
+        .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(52,152,219,0.4); }
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1400px; margin: 2rem auto; padding: 2rem; }
+        .category-item { text-align: center; background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem 1rem; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; position: relative; overflow: hidden; }
+        .category-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s; z-index: 1; }
+        .category-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .category-item:hover::before { opacity: 1; }
+        .category-img { width: 180px; height: 180px; object-fit: contain; margin-bottom: 1rem; z-index: 2; position: relative; }
+        .category-name { font-size: 1.4rem; font-weight: bold; color: white; z-index: 2; position: relative; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); }
+        .category-products { font-size: 0.9rem; color: rgba(255,255,255,0.8); z-index: 2; position: relative; }
+        @media (max-width: 768px) { .categories-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 1rem; } .header h1 { font-size: 2rem; } .category-img { width: 140px; height: 140px; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SCT Product Lineup</h1>
+        <p>Our Complete Range of Cleaning Solutions</p>
+        <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+    </div>
+    
+    <div class="categories-grid">
+        <div class="category-item" onclick="showCategory('Commercial Vacuum', ['./Commercial Vacuum/Fimap fb45.png', './Commercial Vacuum/Fimap fimop.png', './Commercial Vacuum/Fimap up36-46.png', './Commercial Vacuum/Fimap fe18.png', './Commercial Vacuum/Fimap fv30.png', './Commercial Vacuum/Fimap fv60.png', './Commercial Vacuum/Fimap fv80.png'])">
+            <img src="./Commercial Vacuum/Fimap fb45.png" alt="Commercial Vacuum" class="category-img">
+            <div class="category-name">Commercial Vacuum</div>
+            <div class="category-products">Fimap Series (6 models)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('High Pressure Water Cleaner', ['./High Pressure Water Cleaner/Spitwater 10-120C.png', './High Pressure Water Cleaner/Spitwater HP201.png', './High Pressure Water Cleaner/Spitwater HP201S.png', './High Pressure Water Cleaner/Spitwater 10-120H.png', './High Pressure Water Cleaner/Spitwater SW201S.png', './High Pressure Water Cleaner/Spitwater HP2030.png', './High Pressure Water Cleaner/Spitwater SW21-200SDE.png', './High Pressure Water Cleaner/Spitwater HP30-250DE.png','./High Pressure Water Cleaner/AVA P25.png', './High Pressure Water Cleaner/AVA P80.png])">
+            <img src="./High Pressure Water Cleaner/Spitwater 10-120C.png" alt="High Pressure Water Cleaner" class="category-img">
+            <div class="category-name">High Pressure Water Cleaner</div>
+            <div class="category-products">Spitwater (10 models)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('Garbage Compactor', ['./Garbage Compactor/Completely Round Body Garbage Compactor.png', './Garbage Compactor/Rear Loaded Truck Body with Container Washing System.png'])">
+            <img src="./Garbage Compactor/Completely Round Body Garbage Compactor.png" alt="Garbage Compactor" class="category-img">
+            <div class="category-name">Garbage Compactor</div>
+            <div class="category-products">Hidromak (2 models)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('Industrial Vacuum', ['./Industrial Vacuum/Coral Aircompact.png', './Industrial Vacuum/Coral Jetclean DF.png', './Industrial Vacuum/Coral Cleango.png', './Industrial Vacuum/Coral Grindex DF.png', './Industrial Vacuum/Coral Iperjet DF.png', './Industrial Vacuum/Coral Noil.png', './Industrial Vacuum/Univac CS-Dumbo.png', './Industrial Vacuum/Univac-SV18-22ET-1.png', './Industrial Vacuum/Depureco Ecobull-ACD.png', './Industrial Vacuum/Depureco M65 Ridotta.png', './Industrial Vacuum/Depureco Minibull.png', './Industrial Vacuum/Depureco Puma-ACD-1.png', './Industrial Vacuum/Depureco Puma-DEX.png', './Industrial Vacuum/Depureco Puma-H-HD-DEX.png'])">
+            <img src="./Industrial Vacuum/Coral Aircompact.png" alt="Industrial Vacuum" class="category-img">
+            <div class="category-name">Industrial Vacuum</div>
+            <div class="category-products">Coral, Univac, Depureco (14 models)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('Dust Suppression', ['./Dust Suppression System/Spraystream S4.0.png', './Dust Suppression System/Spraystream S7.5 Self Supporting Modular.png', './Dust Suppression System/Spraystream S7.5 Self Supporting.png', './Dust Suppression System/Spraystream S18.5.png', './Dust Suppression System/Spraystream S30.0.png', './Dust Suppression System/Spraystream Sledge.png'])">
+            <img src="./Dust Suppression System/Spraystream S4.0.png" alt="Dust Suppression" class="category-img">
+            <div class="category-name">Dust Suppression System</div>
+            <div class="category-products">Spraystream (6 models)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('Ride on Scrubber', ['./Ride on Sweeper/mmg_entire_cylindrical_rgb_ab.png', './Ride on Sweeper/mmg_entire_rgb_ab.png', './Ride on Sweeper/mxr22_ab.png'])">
+            <img src="./Ride on Sweeper/mmg_entire_cylindrical_rgb_ab.png" alt="Ride on Scrubber" class="category-img">
+            <div class="category-name">Ride on Scrubber</div>
+            <div class="category-products">Fimap (3 models)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('Road Sweeper', ['./Road Sweeper/1000 Spark.png', './Road Sweeper/1100.png', './Road Sweeper/75.png', './Road Sweeper/90.png', './Road Sweeper/120.png', './Road Sweeper/850 Mini.png', './Road Sweeper/D3.png', './Road Sweeper/Dulevo 6000.png', './Road Sweeper/D-Zero2s3.png', './Road Sweeper/Ronking.png'])">
+            <img src="./Road Sweeper/dulevo 6000.png" alt="Road Sweeper" class="category-img">
+            <div class="category-name">Road Sweeper</div>
+            <div class="category-products">Dulevo, Ronking (10 models)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('Vacuum on Truck', ['./Vacuum on Truck/Univac SC110DAV9-13AR.png'])">
+            <img src="./Vacuum on Truck/Univac SC110DAV9-13AR.png" alt="Vacuum on Truck" class="category-img">
+            <div class="category-name">Vacuum on Truck</div>
+            <div class="category-products">Univac (1 model)</div>
+        </div>
+        
+        <div class="category-item" onclick="showCategory('Walk Behind Scrubber', ['./Walk Behind Scrubber/Fimap FM43.png', './Walk Behind Scrubber/Fimap Genie E.png', './Walk Behind Scrubber/Fimap Genie B.png', './Walk Behind Scrubber/Fimap Genie BS.png', './Walk Behind Scrubber/Fimap MY50.png', './Walk Behind Scrubber/Fimap IMX.png', './Walk Behind Scrubber/Fimap MMX.png'])">
+            <img src="./Walk Behind Scrubber/Fimap MY50.png" alt="Walk Behind Scrubber" class="category-img">
+            <div class="category-name">Walk Behind Scrubber</div>
+            <div class="category-products">Fimap (7 models)</div>
+        </div>
+    </div>
+
+    <script>
+        function showCategory(title, images) {
+            document.body.innerHTML = `
+                <div style="background: linear-gradient(135deg, #0A4A3C 0%, #0E7494 100%); padding: 4rem 2rem; min-height: 100vh;">
+                    <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">${title}</h2>
+                    <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1400px; margin: 0 auto;">
+                        ${images.map(img => `
+                            <div class="product-img-container" onclick="if(!event.target.classList.contains('e-catalogue-btn')) openModal('${img}', '${img.split('/').pop().replace(/\.[^/.]+$/, '')}')">
+                                <img src="${img}" class="product-img" alt="${img.split('/').pop()}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 10px;">
+                                <div class="product-name" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: yellow; padding: 1rem; font-weight: bold; text-align: center;">${img.split('/').pop().replace(/\.[^/.]+$/, '')}</div>
+                                <button class="e-catalogue-btn" onclick="event.stopPropagation(); openECatalogue('${img}')" style="position: absolute; top: 10px; right: 10px; background: rgba(52,152,219,0.9); color: white; border: none; padding: 0.5rem 0.8rem; border-radius: 20px; font-size: 0.8rem; cursor: pointer; opacity: 0; transition: opacity 0.3s;">📖 E-Catalogue</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button onclick="history.back()" style="display: block; margin: 3rem auto 0; padding: 1rem 2rem; background: linear-gradient(45deg, #3498db, #2980b9); color: white; border: none; border-radius: 50px; font-size: 1.1rem; cursor: pointer;">← Back</button>
+                </div>
+                <style>
+                    .product-img-container { position: relative; border-radius: 15px; overflow: hidden; background: rgba(255,255,255,0.05); padding: 1rem; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+                    .product-img-container:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+                    .product-img-container:hover .e-catalogue-btn { opacity: 1; }
+                    .product-img-container:hover .product-name { transform: translateY(0); }
+                    .product-name { transform: translateY(100%); transition: transform 0.3s; }
+                </style>
+                <script>
+                    function openModal(img, name) {
+                        const modal = document.createElement('div');
+                        modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer';
+                        modal.innerHTML = `<div style="max-width:90%;max-height:90%;position:relative"><span onclick="this.parentElement.parentElement.remove();event.stopPropagation();" style="position:absolute;top:20px;right:30px;font-size:40px;color:white;cursor:pointer;font-weight:bold;z-index:10000">&times;</span><img src="${img}" style="max-width:100%;max-height:100%;border-radius:15px;box-shadow:0 0 50px rgba(255,255,255,0.3)"><div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:white;padding:1rem;border-radius:10px;font-weight:bold">${name}</div></div>`;
+                        document.body.appendChild(modal);
+                        modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+                    }
+                    window.openECatalogue = window.parent ? window.parent.openECatalogue : () => alert('E-Catalogue ready');
+                <\/script>`;
+        }
+    </script>
+<script src="fixed-script.js"></script>
+</body>
+</html>
+

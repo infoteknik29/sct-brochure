@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCT Product Lineup</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-colors.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body class="dashboard">
+    <nav class="navbar">
+        <img src="logo.png" alt="SCT Logo" class="logo-nav">
+        <div class="nav-menu">
+            <a href="dashboard.html">← Home</a>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>SCT Product Lineup</h1>
+        <p>Complete Range of Cleaning Solutions</p>
+    </div>
+
+    <div class="categories-grid">
+        <div class="category-item" onclick="loadCategory('Commercial Vacuum')">
+            <img src="./Commercial Vacuum/Fimap fv30.png" alt="Commercial Vacuum" class="category-img">
+            <div class="category-name">Commercial Vacuum</div>
+            <div class="category-products">Fimap (6 models)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('High Pressure')">
+            <img src="./High Pressure Water Cleaner/Spitwater 10-120C.png" alt="High Pressure Water Cleaner" class="category-img">
+            <div class="category-name">High Pressure Water Cleaner</div>
+            <div class="category-products">Spitwater (8 models)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('Dust Suppression System')">
+            <img src="./Dust Suppression System/Spraystream S4.0.png" alt="Dust Suppression" class="category-img">
+            <div class="category-name">Dust Suppression</div>
+            <div class="category-products">Spraystream (6 models)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('Garbage Compactor')">
+            <img src="./Garbage Compactor/Completely Round Body Garbage Compactor.png" alt="Garbage Compactor" class="category-img">
+            <div class="category-name">Garbage Compactor</div>
+            <div class="category-products">Hidromak (2 models)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('Industrial Vacuum')">
+            <img src="./Industrial Vacuum/Coral Aircompact.png" alt="Industrial Vacuum" class="category-img">
+            <div class="category-name">Industrial Vacuum</div>
+            <div class="category-products">Coral/Univac/Depureco (12 models)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('Ride on Sweeper')">
+            <img src="./Ride on Sweeper/mmg_entire_cylindrical_rgb_ab.png" alt="Ride on Scrubber" class="category-img">
+            <div class="category-name">Ride on Scrubber</div>
+            <div class="category-products">Fimap (3 models)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('Road Sweeper')">
+            <img src="./Road Sweeper/dulevo 6000.png" alt="Road Sweeper" class="category-img">
+            <div class="category-name">Road Sweeper</div>
+            <div class="category-products">Dulevo/Ronking (10 models)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('Vacuum on Truck')">
+            <img src="./Vacuum on Truck/Univac SC110DAV9-13AR.png" alt="Vacuum on Truck" class="category-img">
+            <div class="category-name">Vacuum on Truck</div>
+            <div class="category-products">Univac (1 model)</div>
+        </div>
+
+        <div class="category-item" onclick="loadCategory('Walk Behind Scrubber')">
+            <img src="./Walk Behind Scrubber/Fimap MY50.png " alt="Walk Behind Scrubber" class="category-img">
+            <div class="category-name">Walk Behind Scrubber</div>
+            <div class="category-products">Fimap (7 models)</div>
+        </div>
+    </div>
+
+    <!-- Product Section Template -->
+    <section id="product-section" style="display: none;">
+        <h2 id="category-title" style="text-align: center; font-size: 3rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); background: rgba(255,255,255,0.2); padding: 1rem 2rem; border-radius: 50px; display: inline-block;">Category</h2>
+        <div class="section-bg"></div>
+        <div class="product-grid" id="product-grid"></div>
+        <button onclick="showCategories()" class="btn btn-primary" style="display: block; margin: 3rem auto 0; padding: 1rem 2rem; font-size: 1.2rem;">← All Categories</button>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImg" alt="">
+            <div id="caption"></div>
+        </div>
+    </div>
+
+    <style>
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+        .category-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            cursor: pointer !important;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 16px 64px rgba(0,0,0,0.3);
+        }
+        .category-item:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+        .category-img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .category-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+        .header {
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        #product-section {
+            background: linear-gradient(135deg, #0A4A3C 0%, #0E7494 100%);
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(255,255,255,0.1);
+            padding: 4rem 2rem;
+            min-height: 100vh;
+        }
+        #product-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+        }
+        .section-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1581092160607-a4417b64a8b4?ixlib=rb-4.0.3&fit=max&w=1600');
+            background-size: cover; background-position: center;
+            opacity: 0.25; z-index: -1;
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+        @keyframes bgFloat {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.05) translateY(-20px); }
+        }
+        @media (max-width: 768px) {
+            .categories-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .header h1 { font-size: 2.2rem; }
+        }
+    </style>
+
+    <script src="data/content-config.js"></script>
+    <script src="data/products-complete.js"></script>
+    <script src="fixed-script.js"></script>
+    <script>
+        const categories = {
+            'Commercial Vacuum': ['./Commercial Vacuum/Fimap FB45.png', './Commercial Vacuum/Fimap Fimop.png', './Commercial Vacuum/Fimap UP36-46.png', './Commercial Vacuum/Fimap FE18.png', './Commercial Vacuum/Fimap FV30.png', './Commercial Vacuum/Fimap FV60.png', './Commercial Vacuum/Fimap FV80.png'],
+            'High Pressure': ['./High Pressure Water Cleaner/Spitwater 10-120C.png', './High Pressure Water Cleaner/Spitwater HP201.png', './High Pressure Water Cleaner/Spitwater HP201S.png', './High Pressure Water Cleaner/Spitwater 10-120H.png', './High Pressure Water Cleaner/Spitwater SW201S.png', './High Pressure Water Cleaner/Spitwater HP2030.png', './High Pressure Water Cleaner/Spitwater SW21-200SDE.png', './High Pressure Water Cleaner/Spitwater HP30-250DE.png', './High Pressure Water Cleaner/AVA P25.png','./High Pressure Water Cleaner/AVA P80.png'],
+            'Dust Suppression System': ['./Dust Suppression System/Spraystream S4.0.png', './Dust Suppression System/Spraystream S7.5 Self Supporting Modular.png', './Dust Suppression System/Spraystream S7.5 Self Supporting.png', './Dust Suppression System/Spraystream S18.5.png', './Dust Suppression System/Spraystream S30.0.png', './Dust Suppression System/Spraystream Sledge.png'],
+            'Garbage Compactor': ['./Garbage Compactor/Completely Round Body Garbage Compactor.png', './Garbage Compactor/Rear Loaded Truck Body with Container Washing System.png'],
+            'Industrial Vacuum': ['./Industrial Vacuum/Coral Aircompact.png', './Industrial Vacuum/Coral Jetclean DF.png', './Industrial Vacuum/Coral Cleango.png', './Industrial Vacuum/Coral Grindex DF.png', './Industrial Vacuum/Coral Iperjet DF.png', './Industrial Vacuum/Coral Noil.png', './Industrial Vacuum/Univac CS-Dumbo.png', './Industrial Vacuum/Univac-SV18-22ET-1.png', './Industrial Vacuum/Depureco Ecobull-ACD.png', './Industrial Vacuum/Depureco M65 Ridotta.png', './Industrial Vacuum/Depureco Minibull.png', './Industrial Vacuum/Depureco Puma-ACD-1.png', './Industrial Vacuum/Depureco Puma-DEX.png', './Industrial Vacuum/Depureco Puma-H-HD-DEX.png'],
+            'Ride on Sweeper': ['./Ride on Sweeper/mmg_entire_cylindrical_rgb_ab.png', './Ride on Sweeper/mmg_entire_rgb_ab.png', './Ride on Sweeper/mxr22_ab.png'],
+            'Road Sweeper': ['./Road Sweeper/1000 Spark.png', './Road Sweeper/1100.png', './Road Sweeper/75.png', './Road Sweeper/90.png', './Road Sweeper/120.png', './Road Sweeper/850 Mini.png', './Road Sweeper/D3.png', './Road Sweeper/Dulevo 6000.png', './Road Sweeper/D-Zero2s3.png', './Road Sweeper/Ronking.png'],
+            'Vacuum on Truck': ['./Vacuum on Truck/Univac SC110DAV9-13AR.png'],
+            'Walk Behind Scrubber': ['./Walk Behind Scrubber/Fimap FM43.png', './Walk Behind Scrubber/Fimap Genie E.png', './Walk Behind Scrubber/Fimap Genie B.png', './Walk Behind Scrubber/Fimap Genie BS.png', './Walk Behind Scrubber/Fimap MY50.png', './Walk Behind Scrubber/Fimap IMX.png', './Walk Behind Scrubber/Fimap MMX.png']
+        };
+
+        let currentCategory = '';
+
+        window.loadCategory = function(category) {
+            console.log('Category clicked:', category);
+            currentCategory = category;
+            const images = categories[category];
+            const section = document.getElementById('product-section');
+            const grid = document.getElementById('product-grid');
+        const title = document.getElementById('category-title') || section.querySelector('h2');
+            
+            title.textContent = category;
+            grid.innerHTML = '';
+            
+            images.forEach(img => {
+                const container = document.createElement('div');
+                container.className = 'product-img-container';
+                container.onclick = (e) => {
+                    if (!e.target.classList.contains('e-catalogue-btn')) openModal(img, img.split('/').pop().split('.')[0]);
+                };
+                
+                container.innerHTML = `
+                    <img src="${img}" alt="${img.split('/').pop()}" class="product-img">
+                    <div class="product-name">${img.split('/').pop().split('.')[0]}</div>
+                    <button class="e-catalogue-btn" onclick="event.stopPropagation(); openECatalogue('${img}')">📖 E-Catalogue</button>
+                `;
+                
+                grid.appendChild(container);
+            });
+            
+            document.querySelector('.categories-grid').style.display = 'none';
+            section.style.display = 'block';
+        }
+
+        function showCategories() {
+            document.getElementById('product-section').style.display = 'none';
+            document.querySelector('.categories-grid').style.display = 'grid';
+        }
+
+    </script>
+</body>
+</html>
+

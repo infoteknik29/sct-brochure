@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCT Brochure - Gallery</title>
+<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-colors.css">
+    <link rel="stylesheet" href="mobile-fullscreen.css">
+<body class="dashboard">
+<nav class="navbar">
+        <img src="logo.png" alt="SCT Logo" class="logo-nav">
+        <div class="nav-menu">
+            <a href="#hero">Home</a>
+            <a href="brand-lineup.html" target="_blank">Brand Lineup</a>
+            <a href="product-lineup-fixed.html" target="_blank">Product Lineup</a>
+            <a href="support-service.html" target="_blank">Sales & Service</a>
+            <a href="gallery.html" target="_blank">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <a href="dashboard.html" class="btn btn-primary" style="padding:0.5rem 1rem;text-decoration:none;">← Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <video autoplay muted loop class="hero-video">
+            <source src="video-bg.mp4" type="video/mp4">
+        </video>
+        <header class="hero" id="hero">
+            <h1>SCT Gallery</h1>
+            <p>Explore our projects and installations</p>
+        </header>
+    </div>
+
+    <section class="featured">
+        <h2>Project Gallery</h2>
+        <div class="container" id="galleryContainer"></div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImg" alt="">
+            <div id="caption"></div>
+        </div>
+    </div>
+    
+    <!-- Footer inspired by Ronking Sweeper -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="logo.png" alt="SCT Logo" class="footer-logo">
+                <p>PT. Starindo Cleaning Technologies<br>Achieved Better be Stronger Than Ever.</p>
+                <div class="social-links">
+                    <a href="https://starindocleaning.com/" target="_blank">🌐 www.starindocleaning.com</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="dashboard.html#hero">Home</a></li>
+                    <li><a href="brand-lineup.html" target="_blank">Brand Lineup</a></li>
+                    <li><a href="product-lineup-fixed.html" target="_blank">Product Lineup</a></li>
+                    <li><a href="#support">Sales & Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📧 sales@starindocleaning.com<br>☎️ +62-21-2246-1047<br>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Starindo Cleaning Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <style>
+    .footer {
+        background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        color: white;
+        padding: 4rem 2rem 2rem;
+        margin-top: auto;
+    }
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+    }
+    .footer-logo {
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    .footer-section h3 {
+        margin-bottom: 1rem;
+        color: #4CAF50;
+    }
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+    .footer-section a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .footer-section a:hover {
+        color: white;
+    }
+    .social-links a {
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+    .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #444;
+        color: #aaa;
+    }
+    @media (max-width: 768px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+    }
+    body.dashboard {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 2rem 0;
+        padding: 1rem;
+    }
+    
+    .product-img-container {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.05);
+        padding: 1rem;
+        margin: 1rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    </style>
+    
+<script src="data/content-config.js"></script>
+<script src="data/products.js"></script>
+<script src="fixed-script.js"></script>
+<script>
+    const galleryContainer = document.getElementById('galleryContainer');
+    const galleryItems = (window.SCTContent && window.SCTContent.get('gallery')) || [];
+    if (galleryContainer) {
+        galleryContainer.innerHTML = galleryItems.map(item => `
+            <div class="product-img-container">
+                <img src="${item.src}" alt="${item.alt || ''}" class="product-img" onclick="openModal('${item.src}', '${item.alt || ''}')">
+                <div class="product-name">${item.caption || item.alt || ''}</div>
+            </div>
+        `).join('');
+    }
+</script>
+</body>
+</html>

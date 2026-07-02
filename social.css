@@ -1,0 +1,1 @@
+.social-grid {&#10;  display: flex !important; /* horizontal sejajar */&#10;  justify-content: center !important;&#10;  gap: 1rem !important; /* space between buttons */&#10;  padding: 1rem 0 !important;&#10;  flex-wrap: nowrap !important;&#10;  overflow-x: auto !important; /* scroll if too many */&#10;}

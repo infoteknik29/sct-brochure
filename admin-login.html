@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Login</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e6eef8;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+    .card{width:320px;padding:1.5rem;border-radius:12px;background:linear-gradient(180deg,#0b1220,#0f172a);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    input{width:100%;padding:0.6rem;border-radius:8px;border:1px solid #213547;background:#071224;color:#e6eef8;margin-top:0.6rem}
+    button{width:100%;margin-top:1rem;padding:0.6rem;border-radius:8px;border:none;background:#2563eb;color:white;cursor:pointer}
+    .small{font-size:0.85rem;color:#9fb3cc;margin-top:0.6rem}
+    .error{color:#ffc0c0;margin-top:0.6rem}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Admin Login</h2>
+    <p class="small">Masukkan password admin. Ubah password di <code>data/admin-config.js</code>.</p>
+    <input id="pwd" type="password" placeholder="Password" autocomplete="off" />
+    <div id="err" class="error" aria-live="polite"></div>
+    <button id="btn">Login</button>
+    <p class="small">Jika lupa, edit file <code>data/admin-config.js</code> pada server/hosting Anda.</p>
+  </div>
+
+  <script src="data/admin-config.js"></script>
+  <script>
+    const btn = document.getElementById('btn');
+    const input = document.getElementById('pwd');
+    const err = document.getElementById('err');
+    function tryLogin(){
+      const pw = (window.AdminConfig && window.AdminConfig.password) || '';
+      if(!input.value){ err.textContent = 'Masukkan password.'; return; }
+      if(input.value === pw){
+        sessionStorage.setItem('isAdmin','1');
+        window.location.href = 'admin-content.html';
+      } else {
+        err.textContent = 'Password salah.';
+      }
+    }
+    btn.addEventListener('click', tryLogin);
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter') tryLogin(); });
+  </script>
+</body>
+</html>

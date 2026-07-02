@@ -1,0 +1,30 @@
+plugins = []
+functionsDirectory = "C:\\Users\\cahyadi\\Documents\\SCT-brochure\\netlify\\functions"
+functionsDirectoryOrigin = "config-v1"
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "C:\\Users\\cahyadi\\Documents\\SCT-brochure\\blank"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "etc"
+functions = "C:\\Users\\cahyadi\\Documents\\SCT-brochure\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCT Content Admin</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #111827; color: #f9fafb; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+    .card { background: #1f2937; border: 1px solid #374151; border-radius: 14px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+    h1, h2 { margin-top: 0; }
+    label { display: block; margin: 0.4rem 0 0.2rem; font-size: 0.95rem; }
+    input, textarea, select { width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid #4b5563; background: #111827; color: white; box-sizing: border-box; }
+    button { padding: 0.7rem 1rem; border: none; border-radius: 8px; cursor: pointer; margin-top: 0.6rem; color: white; }
+    .btn-green { background: #16a34a; } .btn-blue { background: #2563eb; } .btn-red { background: #dc2626; } .btn-gray { background: #6b7280; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .small { font-size: 0.85rem; color: #9ca3af; }
+    .item { border: 1px solid #374151; border-radius: 10px; padding: 0.8rem; margin-bottom: 0.7rem; }
+    .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    a { color: #93c5fd; }
+  </style>
+</head>
+<body>
+  <script>
+    // Simple client-side gate: redirect to login if not authenticated.
+    if (sessionStorage.getItem('isAdmin') !== '1') {
+      window.location.href = 'admin-login.html';
+    }
+    function logout(){ sessionStorage.removeItem('isAdmin'); window.location.href='admin-login.html'; }
+  </script>
+  <div class="wrap">
+    <h1>SCT Content Admin</h1>
+    <button class="btn-red" style="float:right; margin-top:-2.2rem;" onclick="logout()">Logout</button>
+    <p class="small">Panel sederhana untuk mengubah konten tanpa edit kode. Perubahan disimpan di browser Anda.</p>
+
+    <div class="card">
+      <h2>Hero</h2>
+      <div class="row">
+        <div><label>Judul</label><input id="heroTitle" /></div>
+        <div><label>Subjudul</label><input id="heroSubtitle" /></div>
+      </div>
+      <div class="row">
+        <div><label>Text tombol</label><input id="heroBtnText" /></div>
+        <div><label>URL tombol</label><input id="heroBtnUrl" /></div>
+      </div>
+      <div class="actions">
+        <button class="btn-blue" onclick="saveHero()">Simpan Hero</button>
+        <button class="btn-gray" onclick="resetSection('hero')">Reset</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Carousel</h2>
+      <div id="carouselList"></div>
+      <button class="btn-green" onclick="addCarouselItem()">Tambah Item Carousel</button>
+      <div class="actions">
+        <button class="btn-blue" onclick="saveCarousel()">Simpan Carousel</button>
+        <button class="btn-gray" onclick="resetSection('carousel')">Reset</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Poster</h2>
+      <div id="posterList"></div>
+      <button class="btn-green" onclick="addPosterItem()">Tambah Poster</button>
+      <div class="actions">
+        <button class="btn-blue" onclick="savePosters()">Simpan Poster</button>
+        <button class="btn-gray" onclick="resetSection('posters')">Reset</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Brand Lineup</h2>
+      <div id="brandList"></div>
+      <button class="btn-green" onclick="addBrandItem()">Tambah Brand</button>
+      <div class="actions">
+        <button class="btn-blue" onclick="saveBrands()">Simpan Brand</button>
+        <button class="btn-gray" onclick="resetSection('brands')">Reset</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Product Lineup</h2>
+      <div id="productList"></div>
+      <button class="btn-green" onclick="addProductItem()">Tambah Product</button>
+      <div class="actions">
+        <button class="btn-blue" onclick="saveProducts()">Simpan Product</button>
+        <button class="btn-gray" onclick="resetSection('products')">Reset</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Gallery</h2>
+      <div id="galleryList"></div>
+      <button class="btn-green" onclick="addGalleryItem()">Tambah Gallery</button>
+      <div class="actions">
+        <button class="btn-blue" onclick="saveGallery()">Simpan Gallery</button>
+        <button class="btn-gray" onclick="resetSection('gallery')">Reset</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Tips</h2>
+      <p class="small">Untuk gambar, isi path relatif seperti <strong>./Poster/Nama.png</strong> atau <strong>Brand Lineup/Nama.png</strong>.</p>
+      <p class="small">Setelah menyimpan, buka <a href="dashboard.html" target="_blank">dashboard.html</a> untuk melihat hasil.</p>
+    </div>
+  </div>
+
+  <script src="data/content-config.js"></script>
+  <script>
+    const content = window.SCTContent;
+
+    function renderAll() {
+      renderList('carousel', 'carouselList');
+      renderList('posters', 'posterList');
+      renderList('brands', 'brandList');
+      renderList('products', 'productList');
+      renderList('gallery', 'galleryList');
+      const hero = content.get('hero');
+      document.getElementById('heroTitle').value = hero.title || '';
+      document.getElementById('heroSubtitle').value = hero.subtitle || '';
+      document.getElementById('heroBtnText').value = hero.buttonText || '';
+      document.getElementById('heroBtnUrl').value = hero.buttonUrl || '';
+    }
+
+    function renderList(key, containerId) {
+      const items = content.get(key) || [];
+      const container = document.getElementById(containerId);
+      container.innerHTML = items.map((item, index) => {
+        const fields = Object.entries(item).map(([field, value]) => {
+          const label = field.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase());
+          return `<label>${label}</label><input data-key="${key}" data-index="${index}" data-field="${field}" value="${(value || '').toString().replace(/"/g, '&quot;')}" />`;
+        }).join('');
+        return `<div class="item"><div class="actions"><button class="btn-red" onclick="removeItem('${key}', ${index})">Hapus</button></div>${fields}</div>`;
+      }).join('');
+    }
+
+    function addCarouselItem() { addItem('carousel', { src: '', alt: '' }); }
+    function addPosterItem() { addItem('posters', { src: '', alt: '' }); }
+    function addBrandItem() { addItem('brands', { name: '', img: '', url: '' }); }
+    function addProductItem() { addItem('products', { category: '', name: '', img: '', eCatalogUrl: '' }); }
+    function addGalleryItem() { addItem('gallery', { src: '', alt: '', caption: '' }); }
+
+    function addItem(key, item) {
+      const list = content.get(key) || [];
+      list.push(item);
+      content.set(key, list);
+      renderList(key, getContainerId(key));
+    }
+
+    function removeItem(key, index) {
+      const list = content.get(key) || [];
+      list.splice(index, 1);
+      content.set(key, list);
+      renderList(key, getContainerId(key));
+    }
+
+    function getContainerId(key) {
+      return {
+        carousel: 'carouselList',
+        posters: 'posterList',
+        brands: 'brandList',
+        products: 'productList',
+        gallery: 'galleryList'
+      }[key];
+    }
+
+    function saveHero() {
+      content.set('hero', {
+        title: document.getElementById('heroTitle').value,
+        subtitle: document.getElementById('heroSubtitle').value,
+        buttonText: document.getElementById('heroBtnText').value,
+        buttonUrl: document.getElementById('heroBtnUrl').value
+      });
+      alert('Hero disimpan');
+    }
+
+    function saveCarousel() { saveDynamic('carousel'); }
+    function savePosters() { saveDynamic('posters'); }
+    function saveBrands() { saveDynamic('brands'); }
+    function saveProducts() { saveDynamic('products'); }
+    function saveGallery() { saveDynamic('gallery'); }
+
+    function saveDynamic(key) {
+      const inputs = document.querySelectorAll(`input[data-key="${key}"]`);
+      const list = content.get(key) || [];
+      const updated = list.map((item, index) => {
+        const clone = { ...item };
+        inputs.forEach(input => {
+          if (Number(input.dataset.index) === index) {
+            clone[input.dataset.field] = input.value;
+          }
+        });
+        return clone;
+      });
+      content.set(key, updated);
+      alert(`${key} disimpan`);
+    }
+
+    function resetSection(key) {
+      if (confirm('Reset ke data default?')) {
+        content.reset(key);
+        renderAll();
+        alert('Reset selesai');
+      }
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test E-Catalogue</title>
+</head>
+<body>
+  <h1>Test Button FB45</h1>
+  <button onclick="openECatalogue('./Commercial Vacuum/fb45.png')">Test FB45</button>
+  <button onclick="openECatalogue('./Commercial Vacuum/Fimap fb45.png')">Test Fimap FB45</button>
+  
+  <script src="data/products.js"></script>
+  <script src="fixed-script.js"></script>
+  <script>
+    // Debug
+    console.log('Test page loaded');
+    setTimeout(() => {
+      console.log('productSpecs keys containing fb45:', Object.keys(window.productSpecs || {}).filter(k => k.includes('fb45')));
+      console.log('window.productSpecs[Commercial Vacuum/fb45.png]:', window.productSpecs ? window.productSpecs['Commercial Vacuum/fb45.png'] : 'undefined');
+    }, 1000);
+  </script>
+</body>
+</html>

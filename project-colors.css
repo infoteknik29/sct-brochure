@@ -1,0 +1,26 @@
+/* SCT Brochure - Custom Brand Gradient Colors */
+:root {
+  --color1: #11100E;
+  --color2: #5D1C34;
+  --color3: #A67D45;
+  --color4: #899581;
+  --color5: #CDBBAD;
+}
+
+body, .dashboard, .login-container {
+  background: linear-gradient(135deg, var(--color1) 0%, var(--color2) 25%, var(--color3) 50%, var(--color4) 75%, var(--color5) 100%) !important;
+  background-attachment: fixed !important;
+}
+
+section[id]:not(.featured) {
+  background: linear-gradient(135deg, var(--color1) 0%, var(--color2) 25%, var(--color3) 50%, var(--color4) 75%, var(--color5) 100%) !important;
+}
+
+.brand-item {
+  background: rgba(248, 220, 176, 0.2) !important; /* F8DCB0 tint */
+  backdrop-filter: blur(10px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color4), var(--color5)) !important;
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales & Service - SCT Brochure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-colors.css">
+    <link rel="stylesheet" href="social.css">
+    <link rel="stylesheet" href="mobile-fullscreen.css">
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(135deg, #11100E 0%, #5D1C34 25%, #A67D45 50%, #899581 75%, #CDBBAD 100%); }
+        .team-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; padding: 2rem; max-width: 1400px; margin: 0 auto; }
+        .team-card { width: 260px; height: 500px; background: rgba(248, 252, 253, 0.1); border-radius: 20px; overflow: hidden; cursor: pointer; transition: transform 0.3s; position: relative; backdrop-filter: blur(10px); }
+        .team-card:hover { transform: scale(1.05); }
+        .team-img { width: 100%; height: 75%; object-fit: cover; }
+        .team-info { padding: 1rem; text-align: center; background: rgba(5, 69, 85, 0.1); height: 25%; display: flex; flex-direction: column; justify-content: center; }
+        .team-name { font-size: 1.2rem; color: #ffd700; font-weight: bold; }
+        .team-role { font-size: 0.95rem; color: #383e50; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-content { max-width: 90%; max-height: 90%; background: rgba(203, 248, 4, 0); border-radius: 20px; padding: 2rem; text-align: center; backdrop-filter: blur(20px); }
+        .close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: #ffd700; }
+        .profile-bio { font-size: 1rem; line-height: 1.6; margin: 1rem 0; color: #ffd700; }
+        .contacts { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+        .contact-btn { padding: 0.5rem 1rem; background: #ffd700; color: black; text-decoration: none; border-radius: 20px; font-size: 0.9rem; transition: all 0.3s; }
+        .contact-btn:hover { background: #ffed4e; transform: translateY(-2px); }
+        h1 { text-align: center; color: #ffd700; font-size: 3rem; margin: 2rem 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        h2 { text-align: center; color: #ffd700; font-size: 2rem; margin: 3rem 0 2rem; }
+        @media (max-width: 768px) { .team-card { width: 280px; height: 420px; } }
+        .footer { background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: white; padding: 4rem 2rem 2rem; margin-top: auto; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto 2rem; }
+        .footer-logo { height: 60px; margin-bottom: 1rem; }
+        .footer-section h3 { margin-bottom: 1rem; color: #4CAF50; }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: white; }
+        .social-links a { margin-right: 1rem; font-size: 1.2rem; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #444; color: #aaa; }
+        @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; gap: 2rem; text-align: center; } }
+        body { min-height: 100vh; display: flex; flex-direction: column; }
+    </style>
+</head>
+<body class="support-service">
+    <nav class="navbar">
+        <img src="logo.png" alt="SCT Logo" class="logo-nav">
+        <div class="nav-menu">
+            <a href="dashboard.html">← Dashboard</a>
+            <a href="brand-lineup.html" target="_blank">Brand Lineup</a>
+            <a href="product-lineup-fixed.html" target="_blank">Product Lineup</a>
+            <a href="gallery.html" target="_blank">Gallery</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://starindocleaning.com/?lang=id" target="_blank" class="btn btn-primary" style="padding:0.5rem 1rem;text-decoration:none;">🌐 Website</a>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <video autoplay muted loop class="hero-video">
+            <source src="video-bg.mp4" type="video/mp4">
+        </video>
+        <header class="hero">
+            <h1 style="font-size: 4rem; color: white; text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">Sales & Service Team</h1>
+            <p style="font-size: 1.8rem; color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Meet our dedicated team members</p>
+        </header>
+    </div>
+
+    <h2>After Sales Service</h2>
+    <div class="team-grid">
+        <div class="team-card" onclick="showProfile(3)">
+            <img src="Support & Service/After Sales Service/Sidiq Suwandiko.png" class="team-img" alt="Sidiq Suwandiko">
+            <div class="team-info">
+                <div class="team-name">Sidiq Suwandiko</div>
+                <div class="team-role">After Sales Service Manager</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(1)">
+            <img src="Support & Service/After Sales Service/Dian Ekayana.png" class="team-img" alt="Dian Ekayana">
+            <div class="team-info">
+                <div class="team-name">Dian Ekayana</div>
+                <div class="team-role">After Sales Service Supervisor</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(2)">
+            <img src="Support & Service/After Sales Service/Rawi Maren.png" class="team-img" alt="Rawi Maren">
+            <div class="team-info">
+                <div class="team-name">Rawi Maren</div>
+                <div class="team-role">Chief of Workshop</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Sales Business Representative</h2>
+    <div class="team-grid">
+        <div class="team-card" onclick="showProfile(14)">
+            <img src="Support & Service/Sales Business Representative/Syamsi Thabrizi.png" class="team-img" alt="Syamsi Thabrizi">
+            <div class="team-info">
+                <div class="team-name">Syamsi Thabrizi</div>
+                <div class="team-role">Project Manager of Municipality Sector</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(5)">
+            <img src="Support & Service/Sales Business Representative/Dede Rahmad.png" class="team-img" alt="Dede Rahmad">
+            <div class="team-info">
+                <div class="team-name">Dede Rahmad</div>
+                <div class="team-role">Business Manager of Industrial Sweeper Scrubber Sector</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(6)">
+            <img src="Support & Service/Sales Business Representative/Irsyad Maulana.png" class="team-img" alt="Irsyad Maulana">
+            <div class="team-info">
+                <div class="team-name">Irsyad Maulana</div>
+                <div class="team-role">Business Manager of Industrial Vacuum Sector</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(4)">
+            <img src="Support & Service/Sales Business Representative/Angga Kusuma Jaya.png" class="team-img" alt="Angga Kusuma Jaya">
+            <div class="team-info">
+                <div class="team-name">Angga Kusuma Jaya</div>
+                <div class="team-role">Supervisor of Industrial Vacuum Sector</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(13)">
+            <img src="Support & Service/Sales Business Representative/Samsul Bahri.png" class="team-img" alt="Samsul Bahri">
+            <div class="team-info">
+                <div class="team-name">Samsul Bahri</div>
+                <div class="team-role">Sales Business Representative Industrial Vacuum Sector</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(12)">
+            <img src="Support & Service/Sales Business Representative/Rofi Subagiya.png" class="team-img" alt="Rofi Subagiya">
+            <div class="team-info">
+                <div class="team-name">Rofi Subagiya</div>
+                <div class="team-role">Sales Business Representative Industrial Vacuum Sector</div>
+            </div>
+        </div>
+         <div class="team-card" onclick="showProfile(11)">
+            <img src="Support & Service/Sales Business Representative/Saeful Bahri.png" class="team-img" alt="Saeful Bahri">
+            <div class="team-info">
+                <div class="team-name">Saeful Bahri</div>
+                <div class="team-role">Sales Business Representative Industrial Vacuum Sector</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(9)">
+            <img src="Support & Service/Sales Business Representative/Ikbal Awalludin.png" class="team-img" alt="Ikbal Awalludin">
+            <div class="team-info">
+                <div class="team-name">Ikbal Awalludin</div>
+                <div class="team-role">Sales Business Representative Industrial Vacuum Sector</div>
+            </div>
+        </div>
+        <div class="team-card" onclick="showProfile(7)">
+            <img src="Support & Service/Sales Business Representative/Muhammad Husni.png" class="team-img" alt="Muhammad Husni">
+            <div class="team-info">
+                <div class="team-name">Muhammad Husni</div>
+                <div class="team-role">Sales Business Representative Sweeper Scrubber Sector</div>
+            </div>
+        </div>
+         <div class="team-card" onclick="showProfile(8)">
+            <img src="Support & Service/Sales Business Representative/Ahmad Fauzy.png" class="team-img" alt="Ahmad Fauzy">
+            <div class="team-info">
+                <div class="team-name">Ahmad Fauzy</div>
+                <div class="team-role">Sales Business Representative Sweeper Scrubber Sector</div>
+            </div>
+        </div>
+         <div class="team-card" onclick="showProfile(10)">
+            <img src="Support & Service/Sales Business Representative/Jhoulang Willyantoro.png" class="team-img" alt="Jhoulang Willyantoro">
+            <div class="team-info">
+                <div class="team-name">Jhoulang Willyantoro</div>
+                <div class="team-role">Sales Business Representative Sweeper Scrubber Sector</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profileModal" class="modal" onclick="hideProfile()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="hideProfile()">&times;</span>
+            <img id="profileImg" style="width: 200px; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+            <div id="profileDetails"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="logo.png" alt="SCT Logo" class="footer-logo">
+                <p>PT. Starindo Cleaning Technologies<br>Achieved Better be Stronger Than Ever.</p>
+                <div class="social-links">
+                    <a href="https://starindocleaning.com/" target="_blank">🌐 www.starindocleaning.com</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="dashboard.html#hero">Home</a></li>
+                    <li><a href="brand-lineup.html" target="_blank">Brand Lineup</a></li>
+                    <li><a href="product-lineup-fixed.html" target="_blank">Product Lineup</a></li>
+                    <li><a href="#support">Sales & Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📧 sales@starindocleaning.com<br>☎️ +62-21-2246-1047<br>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Starindo Cleaning Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const teamData = [
+            { name: 'Dian Ekayana', role: 'After Sales Service Supervisor', img: 'Support & Service/After Sales Service/Dian Ekayana.png', bio: 'Dedicated Heavy Equipment Technician with expertise in mechanical systems and heavy machinery control systems. Experienced in managing large-scale unit distribution and installation, with a focus on diagnostic precision and repair efficiency to support corporate operational targets.', email: 'dian.ekayana@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Rawi Maren', role: 'Chief of Workshop', img: 'Support & Service/After Sales Service/Rawi Maren.png', bio: 'Dedicated Heavy Equipment Technician with expertise in mechanical systems and heavy machinery control systems. Experienced in managing large-scale unit distribution and installation, with a focus on diagnostic precision and repair efficiency to support corporate operational targets.', email: 'rawi.maren@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Sidiq Suwandiko', role: 'After Sales Service Manager', img: 'Support & Service/After Sales Service/Sidiq Suwandiko.png', bio: 'Dedicated Heavy Equipment Technician with expertise in mechanical systems and heavy machinery control systems. Experienced in managing large-scale unit distribution and installation, with a focus on diagnostic precision and repair efficiency to support corporate operational targets.', email: 'sidiq.s@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Angga Kusuma Jaya', role: 'Supervisor of Industrial Vacuum Sector', img: 'Support & Service/Sales Business Representative/Angga Kusuma Jaya.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'angga@starindocleaning.com', phone: '+62-21-2246-1047', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Dede Rahmad', role: 'Business Manager of Industrial Sweeper Scrubber Sector', img: 'Support & Service/Sales Business Representative/Dede Rahmad.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'derahmat@starindocleaning.com', phone: '+62-21-2246-1047', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Irsyad Maulana', role: 'Business Manager of Industrial Vacuum Sector', img: 'Support & Service/Sales Business Representative/Irsyad Maulana.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'irsyad.maulana@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Muhammad Husni', role: 'Sales Business Representative Sweeper Scrubber Sector', img: 'Support & Service/Sales Business Representative/Muhammad Husni.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'm.husni@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Ahmad Fauzy', role: 'Sales Business Representative Sweeper Scrubber Sector', img: 'Support & Service/Sales Business Representative/Ahmad Fauzy.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'a.fauzy@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Ikbal Awalludin', role: 'Sales Business Representative Sweeper Scrubber Sector', img: 'Support & Service/Sales Business Representative/Ikbal Awalludin.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'ikbal.awalludin@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Jhoulang Willyantoro', role: 'Sales Business Representative Sweeper Scrubber Sector', img: 'Support & Service/Sales Business Representative/Jhoulang Willyantoro.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'jhoulang@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Saeful Bahri', role: 'Sales Business Representative Sweeper Scrubber Sector', img: 'Support & Service/Sales Business Representative/Saeful Bahri.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'saeful.bahri@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Rofi Subagiya', role: 'Sales Business Representative Industrial Vacuum Sector', img: 'Support & Service/Sales Business Representative/Rofi Subagiya.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'rofi@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Samsul Bahri', role: 'Sales Business Representative Industrial Vacuum Sector', img: 'Support & Service/Sales Business Representative/Samsul Bahri.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'samsul.bahri@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' },
+            { name: 'Syamsi Thabrizi', role: 'Project Manager of Municipality Sector', img: 'Support & Service/Sales Business Representative/Syamsi Thabrizi.png', bio: 'Target-oriented Heavy Equipment Sales Representative with experience in selling equipment units and after-sales services, as well as building long-term relationships with industrial clients.', email: 'syamsi@starindocleaning.com', phone: '+62-21-2246-1047', linkedin: 'https://www.linkedin.com/company/2976076/admin/dashboard/', instagram: 'https://www.instagram.com/starindo_cleaning_technologies/', whatsapp: 'https://wa.me/6282260006200' }
+        ];
+
+        function showProfile(id) {
+            const profile = teamData[id-1];
+            document.getElementById('profileImg').src = profile.img;
+            document.getElementById('profileDetails').innerHTML = `
+                <h2>${profile.name}</h2>
+                <p><strong>${profile.role}</strong></p>
+                <p>${profile.bio}</p>
+                <div class="contacts">
+                    <a href="mailto:${profile.email}" class="contact-btn">📧 ${profile.email}</a>
+                    <a href="tel:${profile.phone.replace('+62 ', '0')}" class="contact-btn">📱 ${profile.phone}</a>
+                    <a href="${profile.linkedin}" target="_blank" class="contact-btn">💼 LinkedIn</a>
+                    <a href="${profile.instagram}" target="_blank" class="contact-btn">📸 Instagram</a>
+                    <a href="${profile.whatsapp}" target="_blank" class="contact-btn">💬 WhatsApp</a>
+                </div>
+            `;
+            document.getElementById('profileModal').style.display = 'flex';
+        }
+
+        function hideProfile() {
+            document.getElementById('profileModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
