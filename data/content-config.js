@@ -58,7 +58,7 @@
       { name: 'Solmax GSE', img: 'Brand Lineup/solmax gse.png', url: 'https://solmaxgse.com/' }
     ],
     products: [
-      { category: 'Commercial Vacuum', name: 'Fimap FB45', img: './Commercial Vacuum/Fimap FB45.png', eCatalogUrl: '' },
+      { category: 'Commercial Vacuum', name: 'Fimap FB45', img: './Commercial Vacuum/Fimap fb45.png', eCatalogUrl: '' },
       { category: 'High Pressure', name: 'Spitwater 10-120C', img: './High Pressure Water Cleaner/Spitwater 10-120C.png', eCatalogUrl: '' },
       { category: 'Road Sweeper', name: 'Dulevo 6000', img: './Road Sweeper/dulevo 6000.png', eCatalogUrl: '' }
     ],
