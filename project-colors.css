@@ -1,26 +1,62 @@
-/* SCT Brochure - Custom Brand Gradient Colors */
+/* SCT Brochure - Refined Color Palette (harmonize top & bottom + ivory) */
 :root {
-  --color1: #11100E;
-  --color2: #5D1C34;
-  --color3: #A67D45;
-  --color4: #899581;
-  --color5: #CDBBAD;
+  --color1: #0f2430; /* deep navy (top) */
+  --color2: #274a40; /* deep teal */
+  --color3: #cdbba3; /* warm sand / ivory-tint */
+  --color4: #5ba5df; /* accent blue */
+  --color5: #081823; /* rich navy for contrast */
+  --ivory:  #F8F0E6; /* soft ivory */
 }
 
-body, .dashboard, .login-container {
-  background: linear-gradient(135deg, var(--color1) 0%, var(--color2) 25%, var(--color3) 50%, var(--color4) 75%, var(--color5) 100%) !important;
+/* Global backgrounds: use single harmonious gradient */
+body, .dashboard, .login-container, .hero-section, section[id]:not(.featured) {
+  background: linear-gradient(135deg, var(--color1) 0%, var(--color2) 28%, var(--color3) 55%, var(--color4) 78%, var(--color5) 100%) !important;
   background-attachment: fixed !important;
+  color: #ffffff !important;
 }
 
-section[id]:not(.featured) {
-  background: linear-gradient(135deg, var(--color1) 0%, var(--color2) 25%, var(--color3) 50%, var(--color4) 75%, var(--color5) 100%) !important;
+/* soft ivory veil to lift foreground components */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(248, 240, 230, 0.20) 0%, rgba(255,255,255,0.06) 40%, rgba(8,24,35,0.12) 100%);
+  z-index: -1;
 }
 
-.brand-item {
-  background: rgba(248, 220, 176, 0.2) !important; /* F8DCB0 tint */
+/* cards and panels: translucent ivory tint over the gradient */
+.brand-item, .category-item, .team-card, .product-img-container, .card, .box, .login-card, .container {
+  background: rgba(248, 240, 230, 0.14) !important; /* ivory tint */
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18) !important;
 }
 
+/* Primary buttons: ivory -> accent blue gradient */
 .btn-primary {
-  background: linear-gradient(135deg, var(--color4), var(--color5)) !important;
+  background: linear-gradient(135deg, var(--ivory) 10%, var(--color4) 100%) !important;
+  color: var(--color5) !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
 }
+
+/* Lower hero / sweeper area: match top palette but warmer with ivory wash */
+.sweeper-fullscreen,
+.product-fullscreen,
+.Poster-fullscreen,
+.sweeper-overlay {
+  background: linear-gradient(180deg, rgba(12,28,38,0.86) 0%, rgba(39,74,64,0.55) 35%, rgba(205,187,163,0.45) 70%, rgba(248,240,230,0.18) 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Hero text and headings remain bright on dark background */
+section h2, .header h1, .hero h1, .hero p, .brand-name, .category-name, .team-name, .team-role {
+  color: #ffffff !important;
+}
+
+/* smaller neutral elements use muted ivory text */
+.muted-ivory { color: rgba(248,240,230,0.85) !important; }
+
+/* provide utility class for subtle ivory backgrounds */
+.bg-ivory-soft { background: rgba(248,240,230,0.10) !important; }
+
